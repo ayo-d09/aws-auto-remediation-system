@@ -1,4 +1,3 @@
-# IAM Role for Lambda
 resource "aws_iam_role" "lambda_auto_heal" {
   name = "lambda_auto_heal_role"
 
