@@ -45,7 +45,4 @@ def lambda_handler(event, context):
     except Exception as e:
         logger.error("Unexpected error: %s", str(e))
         raise
-<<<<<<< HEAD
-    
-=======
->>>>>>> 44f62077cf6aa65c9fcd003c044068e544918e43
+
