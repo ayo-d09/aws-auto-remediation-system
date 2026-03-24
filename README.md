@@ -203,7 +203,7 @@ MIT License - See LICENSE file for details
 
 Ayomide Obadina 
 - GitHub: [@ayo-d09](https://github.com/ayo-d09)
-- Linkedin: https://www.linkedin.com/in/ayomide-obadina-b2b7893b9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
+- Linkedin: https://www.linkedin.com/in/ayomide-obadina-b2b7893b9
 - Email: ddraven009@gmail.com
 
 ## Acknowledgments
