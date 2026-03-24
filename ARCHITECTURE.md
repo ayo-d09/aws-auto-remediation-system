@@ -1,6 +1,6 @@
-# Architecture Overview
+# Architecture
 
-## Auto-Healing Flow
+## Auto-Healing System
 ```
 ┌─────────────┐
 │   EC2       │
