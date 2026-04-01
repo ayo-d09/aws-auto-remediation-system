@@ -1,7 +1,7 @@
 # Architecture
 
 ## Auto-Healing System
-```
+
 ┌─────────────┐
 │   EC2       │
 │  Instance   │
@@ -47,7 +47,7 @@
     │   EC2    │
     │  Reboot  │
     └──────────┘
-```
+
 
 ## Components
 
@@ -71,6 +71,6 @@
 
 - **Infrastructure**: Terraform
 - **Monitoring**: AWS CloudWatch, CloudWatch Agent
-- **Auto-Healing**: AWS Lambda (Python 3.11)
+- **Auto-Healing**: AWS Lambda 
 - **Notifications**: AWS SNS
-- **Compute**: AWS EC2 (Amazon Linux 2)
+- **Compute**: AWS EC2 
