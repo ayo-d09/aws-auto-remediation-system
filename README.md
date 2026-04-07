@@ -1,13 +1,13 @@
 # AWS Monitoring & Auto-Healing System
 
-A simple but smart setup that watches your EC2 instance 24/7 and automatically fixes problems before you even notice using CloudWatch, Lambda, and Terraform.
+A simple setup that watches your EC2 instance 24/7 and automatically fixes problems before you even notice using CloudWatch, Lambda, and Terraform.
 
 ## What It Does 
 
 - Monitors CPU, Memory, Disk, and Network in real-time
 - Sends warning emails when things get high (80%+)
 - Automatically reboots the instance if it goes critical (90%+)
-- Gives you a clean CloudWatch dashboard to check everything
+- Gives you a CloudWatch dashboard to check everything
 - Fully managed with Terraform (deploy in minutes)
   
 ## Features
@@ -15,7 +15,7 @@ A simple but smart setup that watches your EC2 instance 24/7 and automatically f
 - Real-time monitoring of CPU, Memory, Disk, and Network metrics
 - Multi-level alerting (Warning at 80%, Critical at 90%)
 - Automated instance recovery via Lambda
-- Email notifications for all events
+- Email notifications
 - Infrastructure as Code using Terraform
 - CloudWatch Dashboard for visualization
 
@@ -25,8 +25,8 @@ See (ARCHITECTURE.md) for detailed system design.
 
 ## Prerequisites
 
-- AWS Account with appropriate permissions
-- Terraform >= 1.0
+- AWS Account with the right permissions
+- Terraform
 - AWS CLI configured
 - SSH key pair for EC2 access
 
@@ -39,7 +39,6 @@ cd aws-monitoring-automation
 ```
 
 ### 2. Configure Variables
-
 Edit `terraform.tfvars`:
 ```hcl
 alert_email = "your-email@example.com"
@@ -67,12 +66,12 @@ SSH into the instance and stress the CPU:
 # Generate high CPU load for 15 minutes
 timeout 900 dd if=/dev/zero of=/dev/null &
 timeout 900 dd if=/dev/zero of=/dev/null &
-Now wait 10–15 minutes and watch what happens:
 
-You’ll receive warning emails
-Then critical alerts
-The instance will reboot by itself
-Lambda will handle the recovery
+Now wait around 10–15 minutes and:
+- You’ll receive warning emails
+- Then critical alerts
+- The instance will reboot by itself
+- Lambda will handle the recovery
 
 You can watch the Lambda logs live with:
 aws logs tail /aws/lambda/auto_heal_ec2 --follow
@@ -115,25 +114,6 @@ aws-monitoring-automation/
 - **CriticalCPU-AutoHeal**: CPU > 90% for 10 minutes → Reboots instance
 - **CriticalMemory-AutoHeal**: Memory > 90% for 10 minutes → Reboots instance
 
-## Testing Auto-Healing
-
-SSH into the EC2 instance and generate high CPU load:
-```bash
-# Generate CPU load for 15 minutes
-timeout 900 dd if=/dev/zero of=/dev/null &
-timeout 900 dd if=/dev/zero of=/dev/null &
-```
-
-Monitor the process:
-1. Wait 10-15 minutes for alarm to trigger
-2. Check email for notifications
-3. Observe instance reboot in EC2 console
-4. View Lambda execution logs
-
-## Monitoring Lambda Logs
-```bash
-aws logs tail /aws/lambda/auto_heal_ec2 --follow
-```
 
 ## Cost Estimate
 
@@ -153,7 +133,7 @@ To destroy all resources:
 terraform destroy
 ```
 
-Type `yes` when prompted.
+Type "yes" when prompted.
 
 ## Security Considerations
 
