@@ -142,14 +142,14 @@ Type "yes" when prompted.
 - CloudWatch logs retained for 30 days
 - No hardcoded credentials
 
-## Improvements & Roadmap
+## Possible Improvements
 
-- [ ] Add auto-scaling based on metrics
-- [ ] Implement instance replacement instead of reboot
-- [ ] Add Slack/PagerDuty integration
-- [ ] Multi-region support
-- [ ] Add database monitoring
-- [ ] Custom metric collection
+- Add auto-scaling based on metrics
+- Implement instance replacement instead of reboot
+- Add Slack/PagerDuty integration
+- Multi-region support
+- Add database monitoring
+- Custom metric collection
 
 ## Troubleshooting
 
@@ -174,6 +174,7 @@ sudo systemctl restart amazon-cloudwatch-agent
 ## Contributing
 
 Please open an issue or submit a pull request.
+...looking forward 
 
 ## License
 
