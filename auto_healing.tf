@@ -51,7 +51,7 @@ resource "aws_lambda_function" "auto_heal" {
   runtime          = "python3.11"
 }
 
-# --- Allow SNS to invoke Lambda ---
+# --- Allowing SNS to invoke Lambda ---
 resource "aws_lambda_permission" "sns_invoke" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.auto_heal.function_name
