@@ -1,6 +1,6 @@
 # AWS Monitoring & Auto-Healing System
 
-A simple setup that watches your EC2 instance 24/7 and automatically fixes problems before you even notice using CloudWatch, Lambda, and Terraform.
+This is a simple setup that watches your EC2 instance 24/7 and automatically fixes problems before you even notice using CloudWatch, Lambda, and Terraform.
 
 ## What It Does 
 
