@@ -1,6 +1,6 @@
-# AWS Monitoring & Auto-Healing System
+## AWS auto-remediation system
 
-This is a simple setup that watches your EC2 instance 24/7 and automatically fixes problems before you even notice using CloudWatch, Lambda, and Terraform.
+This is a monitoring and auto-healing system using a simple setup that watches your EC2 instance 24/7 and automatically fixes problems before you even notice using CloudWatch, Lambda, and Terraform.
 
 ## What It Does 
 
@@ -8,7 +8,8 @@ This is a simple setup that watches your EC2 instance 24/7 and automatically fix
 - Sends warning emails when things get high (80%+)
 - Automatically reboots the instance if it goes critical (90%+)
 - Gives you a CloudWatch dashboard to check everything
-- Fully managed with Terraform (deploy in minutes)
+
+  Fully managed with Terraform (deploy in minutes)
   
 ## Features
 
@@ -34,8 +35,8 @@ See (ARCHITECTURE.md) for detailed system design.
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/aws-monitoring-automation.git
-cd aws-monitoring-automation
+git clone https://github.com/ayo-d09/aws-auto-remediation-system.git
+cd aws-auto-remediation-system
 ```
 
 ### 2. Configure Variables
@@ -61,11 +62,47 @@ After deployment, Terraform outputs the CloudWatch Dashboard URL.
 
 ## How to Test Auto-Healing 
 
-SSH into the instance and stress the CPU:
+# SSH into the instance:
 
-# Generate high CPU load for 15 minutes
-timeout 900 dd if=/dev/zero of=/dev/null &
-timeout 900 dd if=/dev/zero of=/dev/null &
+- Get the instance public ip using:
+```bash
+"terraform output"
+```
+
+- Find the .pem key: you need the key you used when creating the ec2 instance
+
+- Fix key permissions:
+```bash
+chmod 400 ~/Downloads/yourpemkey.pem
+```
+
+- SSH into the instance:
+ssh -i ~/Downloads/yourpemkey.pem ec2-user@<PUBLIC-IP>
+
+
+# Generate high CPU load for 15 minutes:
+
+Install stress-ng:
+```bash
+  - Amazon Linux
+sudo yum install -y epel-release && sudo yum install -y stress-ng
+```
+OR
+
+```bash 
+  - Ubuntu/Debian
+sudo apt install -y stress-ng
+```
+
+```bash
+stress-ng --cpu $(nproc) --cpu-load 95 --timeout 0 &
+```
+
+For memory pressure:
+
+```bash
+stress-ng --vm 2 --vm-bytes 90% --vm-keep --timeout 0 &
+```
 
 Now wait around 10–15 minutes and:
 - You’ll receive warning emails
@@ -113,6 +150,7 @@ aws-monitoring-automation/
 ### Critical Alarms (Auto-Healing)
 - **CriticalCPU-AutoHeal**: CPU > 90% for 10 minutes → Reboots instance
 - **CriticalMemory-AutoHeal**: Memory > 90% for 10 minutes → Reboots instance
+- **CriticalDisk-Autoheal**: Disk > 90% for 10 minutes → Reboots instance
 
 
 ## Cost Estimate
@@ -133,7 +171,7 @@ To destroy all resources:
 terraform destroy
 ```
 
-Type "yes" when prompted.
+Type "yes" when you get a prompt.
 
 ## Security Considerations
 
@@ -174,7 +212,6 @@ sudo systemctl restart amazon-cloudwatch-agent
 ## Contributing
 
 Please open an issue or submit a pull request.
-...looking forward 
 
 ## License
 
