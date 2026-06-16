@@ -66,7 +66,7 @@ After deployment, Terraform outputs the CloudWatch Dashboard URL.
 
 - Get the instance public ip using:
 ```bash
-"terraform output"
+terraform output
 ```
 
 - Find the .pem key: you need the key you used when creating the ec2 instance
@@ -83,17 +83,18 @@ ssh -i ~/Downloads/yourpemkey.pem ec2-user@<PUBLIC-IP>
 # Generate high CPU load for 15 minutes:
 
 Install stress-ng:
+
+- Amazon Linux
 ```bash
-  - Amazon Linux
 sudo yum install -y epel-release && sudo yum install -y stress-ng
 ```
 OR
 
+- Ubuntu/Debian
 ```bash 
-  - Ubuntu/Debian
 sudo apt install -y stress-ng
 ```
-
+Then stress:
 ```bash
 stress-ng --cpu $(nproc) --cpu-load 95 --timeout 0 &
 ```
