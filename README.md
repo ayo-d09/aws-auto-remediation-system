@@ -112,8 +112,9 @@ Now wait around 10–15 minutes and:
 - Lambda will handle the recovery
 
 You can watch the Lambda logs live with:
+```bash
 aws logs tail /aws/lambda/auto_heal_ec2 --follow
-
+```
 ## Project Structure
 ```
 aws-monitoring-automation/
