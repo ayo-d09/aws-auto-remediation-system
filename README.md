@@ -217,7 +217,7 @@ Please open an issue or submit a pull request.
 
 MIT License - See LICENSE file for details
 
-<img width="1000" height="760" alt="architecture-diagram-2" src="https://github.com/user-attachments/assets/0f79a5fb-e4cd-4894-b933-1d0d7c6c20c3" />## AWS auto-remediation system
+<img width="1000" height="760" alt="architecture-diagram-2" src="https://github.com/user-attachments/assets/0f79a5fb-e4cd-4894-b933-1d0d7c6c20c3" />
  
 ## Author
 
