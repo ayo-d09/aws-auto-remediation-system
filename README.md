@@ -1,5 +1,3 @@
-<img width="1000" height="760" alt="architecture-diagram-2" src="https://github.com/user-attachments/assets/0f79a5fb-e4cd-4894-b933-1d0d7c6c20c3" />## AWS auto-remediation system
-
 This is a monitoring and auto-healing system using a simple setup that watches your EC2 instance 24/7 and automatically fixes problems before you even notice using CloudWatch, Lambda, and Terraform.
 
 ## What It Does 
@@ -219,7 +217,8 @@ Please open an issue or submit a pull request.
 
 MIT License - See LICENSE file for details
 
-
+<img width="1000" height="760" alt="architecture-diagram-2" src="https://github.com/user-attachments/assets/0f79a5fb-e4cd-4894-b933-1d0d7c6c20c3" />## AWS auto-remediation system
+ 
 ## Author
 
 Ayomide Obadina 
