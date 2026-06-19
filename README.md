@@ -1,4 +1,4 @@
-## AWS auto-remediation system
+<img width="1000" height="760" alt="architecture-diagram-2" src="https://github.com/user-attachments/assets/0f79a5fb-e4cd-4894-b933-1d0d7c6c20c3" />## AWS auto-remediation system
 
 This is a monitoring and auto-healing system using a simple setup that watches your EC2 instance 24/7 and automatically fixes problems before you even notice using CloudWatch, Lambda, and Terraform.
 
@@ -218,6 +218,101 @@ Please open an issue or submit a pull request.
 ## License
 
 MIT License - See LICENSE file for details
+
+![Uploading architecture-diag<svg viewBox="0 0 1000 760" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#DC2626"/>
+    </marker>
+    <marker id="arrowAmber" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#D97706"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="760" fill="#ffffff"/>
+
+  <text x="500" y="36" text-anchor="middle" font-size="24" font-weight="700" fill="#0f172a">AWS Auto-Remediation Architecture</text>
+  <text x="500" y="58" text-anchor="middle" font-size="14" fill="#64748b">EC2 monitoring → CloudWatch alarms → automated recovery via Lambda</text>
+
+  <!-- Terraform -->
+  <rect x="20" y="90" width="200" height="55" rx="8" fill="#F3E8FF" stroke="#7C3AED" stroke-width="2"/>
+  <text x="120" y="113" text-anchor="middle" font-size="14" font-weight="600" fill="#5B21B6">Terraform</text>
+  <text x="120" y="131" text-anchor="middle" font-size="11" fill="#5B21B6">deploys &amp; manages all resources</text>
+
+  <!-- EC2 -->
+  <rect x="20" y="360" width="220" height="110" rx="8" fill="#DBEAFE" stroke="#2563EB" stroke-width="2"/>
+  <text x="130" y="400" text-anchor="middle" font-size="15" font-weight="600" fill="#1E40AF">EC2 Instance</text>
+  <text x="130" y="420" text-anchor="middle" font-size="12" fill="#1E40AF">+ CloudWatch Agent</text>
+  <text x="130" y="440" text-anchor="middle" font-size="11" fill="#3B5BA9">(emits CPU/Mem/Disk/Net)</text>
+
+  <!-- CloudWatch Metrics -->
+  <rect x="330" y="360" width="220" height="110" rx="8" fill="#CCFBF1" stroke="#0D9488" stroke-width="2"/>
+  <text x="440" y="400" text-anchor="middle" font-size="15" font-weight="600" fill="#0F766E">CloudWatch Metrics</text>
+  <text x="440" y="420" text-anchor="middle" font-size="12" fill="#0F766E">CPU · Memory · Disk · Network</text>
+
+  <!-- Dashboard -->
+  <rect x="330" y="540" width="220" height="70" rx="8" fill="#CCFBF1" stroke="#0D9488" stroke-width="2"/>
+  <text x="440" y="570" text-anchor="middle" font-size="14" font-weight="600" fill="#0F766E">CloudWatch Dashboard</text>
+  <text x="440" y="588" text-anchor="middle" font-size="11" fill="#0F766E">visualization</text>
+
+  <!-- Warning Alarm -->
+  <rect x="640" y="200" width="190" height="70" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="2"/>
+  <text x="735" y="228" text-anchor="middle" font-size="14" font-weight="600" fill="#92400E">Warning Alarm</text>
+  <text x="735" y="246" text-anchor="middle" font-size="11" fill="#92400E">&gt;80% for 10 min</text>
+
+  <!-- Critical Alarm -->
+  <rect x="640" y="470" width="190" height="70" rx="8" fill="#FEE2E2" stroke="#DC2626" stroke-width="2"/>
+  <text x="735" y="498" text-anchor="middle" font-size="14" font-weight="600" fill="#991B1B">Critical Alarm</text>
+  <text x="735" y="516" text-anchor="middle" font-size="11" fill="#991B1B">&gt;90% for 10 min</text>
+
+  <!-- Email -->
+  <rect x="860" y="90" width="120" height="55" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="2"/>
+  <text x="920" y="120" text-anchor="middle" font-size="13" font-weight="600" fill="#92400E">Alert Email</text>
+  <text x="920" y="136" text-anchor="middle" font-size="10" fill="#92400E">via SNS</text>
+
+  <!-- SNS -->
+  <rect x="860" y="200" width="120" height="55" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="2"/>
+  <text x="920" y="232" text-anchor="middle" font-size="13" font-weight="600" fill="#92400E">SNS Topic</text>
+
+  <!-- Lambda -->
+  <rect x="860" y="470" width="120" height="70" rx="8" fill="#FEE2E2" stroke="#DC2626" stroke-width="2"/>
+  <text x="920" y="498" text-anchor="middle" font-size="13" font-weight="600" fill="#991B1B">Lambda</text>
+  <text x="920" y="514" text-anchor="middle" font-size="10" fill="#991B1B">auto_remediation.py</text>
+
+  <!-- Arrows -->
+  <line x1="120" y1="145" x2="130" y2="358" stroke="#7C3AED" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowPurple)"/>
+
+  <line x1="240" y1="415" x2="328" y2="415" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="284" y="405" text-anchor="middle" font-size="10" fill="#475569">metrics</text>
+
+  <line x1="440" y1="470" x2="440" y2="538" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <path d="M550,390 C600,390 600,235 638,235" fill="none" stroke="#D97706" stroke-width="2" marker-end="url(#arrowAmber)"/>
+  <path d="M550,440 C600,440 600,505 638,505" fill="none" stroke="#DC2626" stroke-width="2" marker-end="url(#arrowRed)"/>
+
+  <line x1="830" y1="235" x2="858" y2="228" stroke="#D97706" stroke-width="2" marker-end="url(#arrowAmber)"/>
+  <line x1="920" y1="200" x2="920" y2="147" stroke="#D97706" stroke-width="2" marker-end="url(#arrowAmber)"/>
+  <line x1="830" y1="505" x2="858" y2="505" stroke="#DC2626" stroke-width="2" marker-end="url(#arrowRed)"/>
+
+  <path d="M920,540 C920,660 130,660 130,469" fill="none" stroke="#DC2626" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+  <text x="525" y="678" text-anchor="middle" font-size="12" fill="#991B1B" font-weight="600">reboots instance (critical only)</text>
+
+  <!-- Legend -->
+  <rect x="20" y="700" width="14" height="14" fill="#FEF3C7" stroke="#D97706"/>
+  <text x="40" y="711" font-size="11" fill="#475569">Warning path (notify)</text>
+  <rect x="190" y="700" width="14" height="14" fill="#FEE2E2" stroke="#DC2626"/>
+  <text x="210" y="711" font-size="11" fill="#475569">Critical path (auto-heal)</text>
+  <rect x="380" y="700" width="14" height="14" fill="#F3E8FF" stroke="#7C3AED"/>
+  <text x="400" y="711" font-size="11" fill="#475569">Infrastructure as Code</text>
+</svg>
+ram-2.svg…]()
+
 
 ## Author
 
